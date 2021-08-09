@@ -1,0 +1,20 @@
+.path-tree,
+.home-page {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  display: inline-block;
+  border: none;
+}
+.path-tree {
+  width: 30%;
+}
+.home-page {
+  width: 70%;
+}
+
+.main {
+  height: 100vh;
+  width: 100vw;
+}
