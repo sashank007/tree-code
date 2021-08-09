@@ -3,3 +3,17 @@ ol,
 li {
   list-style-type: none;
 }
+
+.category-button {
+  margin: 10px;
+  width: 250px;
+  height: 40px;
+  color: #ed3838;
+  background: black;
+}
+
+.category-button:hover,
+.category-button:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}

@@ -21,3 +21,21 @@ export const getCodeData = async (treeNodeTitle = "Root") => {
 
   return response;
 };
+
+export const saveCodeData = async (title, explanation, code) => {
+  const response = await fetch(`${BACKEND_URI}/saveProblem`, {
+    method: "post",
+    headers: new Headers({
+      "content-type": "application/json",
+    }),
+    body: JSON.stringify({ title, explanation, code }),
+  })
+    .then((res) => {
+      console.log("res from server : ", res);
+      return res.json();
+    })
+    .then((data) => data)
+    .catch((error) => console.error("Error fetching data from server ", error));
+
+  return response;
+};

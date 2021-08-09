@@ -82,7 +82,7 @@ app.post("/updateSubTree", async (req, res) => {
   const { parentNode, childNodeTitle } = req.body;
 
   if (parentNode && childNodeTitle) {
-    console.log("partent and child : ", parentNode, childNodeTitle);
+    console.log("parent and child : ", parentNode, childNodeTitle);
     let query = { title: parentNode };
     const updateDocument = {
       $push: { children: childNodeTitle },
@@ -95,10 +95,35 @@ app.post("/updateSubTree", async (req, res) => {
   res.send(result);
 });
 
+app.post("/saveProblem", async (req, res) => {
+  console.log("saving problem..", req);
+
+  const { title, explanation, code } = req.body;
+
+  console.log("reqeust body vor save problem ", req.body);
+
+  const result = await saveProblem(title, explanation, code);
+
+  res.send(result);
+});
+
+app.post("/updateProblems", async (req, res) => {
+  console.log("saving problem..", req);
+
+  const { parentNode, problemTitle } = req.body;
+
+  console.log("reqeust body for update problem ", req.body);
+
+  const result = await updateProblems(parentNode, problemTitle);
+
+  res.send(result);
+});
+
 function saveTreeNode(nodeTitle) {
   const childNode = {
     title: nodeTitle,
     children: [],
+    problems: [],
   };
 
   const treeNode = new MainTreeCollection(childNode);
@@ -107,6 +132,41 @@ function saveTreeNode(nodeTitle) {
     if (err) return console.error(err);
     console.log("Succesfully saved ", childNode);
   });
+}
+
+async function saveProblem(title, explanation, code) {
+  if (title !== "" && explanation !== "" && code !== "") {
+    const childNode = {
+      title: title,
+      explanation: explanation,
+      code: code,
+    };
+
+    const newProblem = new CodeRepoCollection(childNode);
+
+    try {
+      return await newProblem.save();
+    } catch (e) {
+      return e;
+    }
+  }
+}
+
+async function updateProblems(parentNode, problemTitle) {
+  if (parentNode && problemTitle) {
+    console.log("parent and problem : ", parentNode, problemTitle);
+    let query = { title: parentNode };
+
+    const updateDocument = {
+      $push: { problems: problemTitle },
+    };
+
+    try {
+      return await MainTreeCollection.updateOne(query, updateDocument);
+    } catch (e) {
+      return e;
+    }
+  }
 }
 
 app.listen(PORT, console.log(`Server starting at ${PORT}`));

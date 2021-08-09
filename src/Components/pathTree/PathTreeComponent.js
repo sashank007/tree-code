@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { pathTreeSaver } from "../../Actions/PathTreeActions";
 import { treeFetcher } from "../../Actions/TreeActions";
 import StringUtils from "../../utils/StringUtils";
+import "./PathTreeComponent.css";
 
 export default function PathTreeComponent() {
   let { pathTree } = useSelector((state) => ({
@@ -35,7 +36,11 @@ export default function PathTreeComponent() {
       <ul>
         {pathTree.map((node) => (
           <li>
-            <button onClick={pathTreeClicked} value={node}>
+            <button
+              className="path-tree-button"
+              onClick={pathTreeClicked}
+              value={node}
+            >
               {node}
             </button>
           </li>

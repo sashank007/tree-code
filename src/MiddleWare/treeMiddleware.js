@@ -41,3 +41,21 @@ export const saveTreeData = async (parentNode, childNodeTitle) => {
   console.log("done saving data");
   return response;
 };
+
+export const updateProblems = async (parentNode, problemTitle) => {
+  const response = await fetch(`${BACKEND_URI}/updateProblems`, {
+    method: "post",
+    headers: new Headers({
+      "content-type": "application/json",
+    }),
+    body: JSON.stringify({ parentNode, problemTitle }),
+  })
+    .then((res) => {
+      console.log("res  : ", res);
+      return res.json();
+    })
+    .then((data) => data)
+    .catch((error) => console.error("Error fetching data : ", error));
+  console.log("done saving data");
+  return response;
+};

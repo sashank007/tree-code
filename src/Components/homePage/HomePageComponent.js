@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { pathTreeSaver } from "../../Actions/PathTreeActions";
 import { treeFetcher } from "../../Actions/TreeActions";
 import StringUtils from "../../utils/StringUtils";
-import AddSubTreeComponent from "../addSubTree/AddSubTreeComponent";
+import AddButtonComponent from "../addButton/AddButtonComponent";
 import CodePageComponent from "../codePage/CodePageComponent";
 import PathTreeComponent from "../pathTree/PathTreeComponent";
 import SubTreeComponent from "../subtree/SubTreeComponent";
@@ -64,7 +64,11 @@ export default function HomePageComponent() {
             (category) =>
               StringUtils.isNotBlank(category) && (
                 <li key={category}>
-                  <button onClick={clickTreeNode} value={category}>
+                  <button
+                    className="category-button"
+                    onClick={clickTreeNode}
+                    value={category}
+                  >
                     {category}
                   </button>
                 </li>
@@ -90,7 +94,7 @@ export default function HomePageComponent() {
         </div>
       )}
       <div>
-        <AddSubTreeComponent
+        <AddButtonComponent
           currentSubTreeTitle={parentNode}
           fetchSubTree={fetchSubTree}
         />
