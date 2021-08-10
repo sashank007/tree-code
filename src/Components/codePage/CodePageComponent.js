@@ -10,8 +10,12 @@ export default function CodePageComponent(props) {
 
   const { problems } = props;
 
+  console.log("problems has changed : ", problems);
   useEffect(() => {
     fetchCode();
+    return () => {
+      setCodePieces([]);
+    };
   }, [problems]);
 
   /**
@@ -19,9 +23,9 @@ export default function CodePageComponent(props) {
    * through /findCode.
    */
   const fetchCode = async () => {
-    let codePieces = [];
-
+    console.log("fetch code called");
     const promises = [];
+
     console.log("props for code page : ", props);
     if (problems && problems.length > 0) {
       problems.forEach((problem) => {
@@ -37,14 +41,6 @@ export default function CodePageComponent(props) {
   };
 
   const displayCode = () => {
-    // const codePieces = [
-    //   {
-    //     code: "function (a,b): return a +b",
-    //     explanation: "Wow so nice coding!",
-    //   },
-    //   { code: "lambda x : x + y", explanation: "How to use lambda" },
-    // ];
-
     return (
       <ul>
         {codePieces.map((code) => (

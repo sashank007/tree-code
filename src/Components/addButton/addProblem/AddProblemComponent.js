@@ -24,7 +24,7 @@ export default function AddProblemComponent(props) {
 
   return (
     <div>
-      Add problem
+      <h2> Add problem</h2>
       <pre>Title : </pre>
       <input ref={titleRef} type="text"></input>
       <pre>Explanation : </pre>

@@ -1,3 +1,35 @@
 .code-component {
-  border: 0.5px solid rgb(228, 117, 13);
+  margin-right: 44px;
+}
+
+.code-explanation {
+  margin: 1rem;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 1rem;
+}
+.code-snippet {
+  margin: 1rem;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  height: auto !important;
+
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+  background: rgb(40, 44, 52);
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  overflow: auto;
+  tab-size: 1.5em;
+  padding: 1rem;
+  /* max-width: 40vw; */
+}
+
+.code-component::before {
+  content: " ";
+  display: block;
+  border-bottom: 1px solid #ececec;
+  padding-top: 44px;
+  margin-bottom: 40px;
 }

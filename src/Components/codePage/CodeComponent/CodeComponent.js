@@ -6,10 +6,11 @@ export default function CodeComponent(props) {
   console.log("props : ", props);
   return (
     <div className="code-component">
-      <div>
+      <div className="code-explanation">
         <p>{explanation}</p>
       </div>
-      <pre>
+
+      <pre className="code-snippet">
         <code>{code}</code>
       </pre>
     </div>

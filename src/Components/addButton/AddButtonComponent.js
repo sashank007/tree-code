@@ -53,7 +53,7 @@ export default function AddButtonComponent(props) {
           contentLabel="Example Modal"
         >
           <button onClick={hideModal}>close</button>
-          <div>I am a modal</div>
+          <br />
           <button onClick={addProblem}>Add Problem</button>
           <button onClick={addTreeNode}>Add TreeNode</button>
           <div>

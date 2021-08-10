@@ -19,16 +19,12 @@ export default function HomePageComponent() {
 
   const dispatch = useDispatch();
 
-  console.log("current tree in home page : ", treeNode);
-
   const [displayProgCategories, setdisplayProgCategories] = useState(true);
   const [displaySubTree, setdisplaySubTree] = useState(false);
   const [parentNode, setParentNode] = useState("Root");
 
   //Function to retrieve the main categories from the redux store
   const fetchSubTree = (treeNodeTitle) => {
-    console.log("fetching subTree...", treeNodeTitle);
-
     treeFetcher(dispatch, treeNodeTitle);
   };
 
@@ -47,8 +43,6 @@ export default function HomePageComponent() {
   const displaySubTreeComponent = (newSubTreeTitle) => {
     setParentNode(newSubTreeTitle);
     fetchSubTree(newSubTreeTitle);
-    // setdisplayProgCategories(false);
-    // setdisplaySubTree(true);
   };
 
   // Function to show the categories

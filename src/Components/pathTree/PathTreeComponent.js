@@ -48,5 +48,10 @@ export default function PathTreeComponent() {
       </ul>
     );
   };
-  return <div>{displayPathTree()}</div>;
+  return (
+    <div>
+      <h2>Path Stack</h2>
+      {displayPathTree()}
+    </div>
+  );
 }
