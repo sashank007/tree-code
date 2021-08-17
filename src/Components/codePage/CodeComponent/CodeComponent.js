@@ -3,7 +3,7 @@ import "./CodeComponent.css";
 
 export default function CodeComponent(props) {
   const { code, explanation } = props;
-  console.log("props : ", props);
+
   return (
     <div className="code-component">
       <div className="code-explanation">

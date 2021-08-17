@@ -1,5 +1,7 @@
 .code-component {
-  margin-right: 44px;
+  text-align: left;
+  max-width: 70%;
+  margin-left: 10%;
 }
 
 .code-explanation {

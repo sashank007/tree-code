@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { getCodeData, saveCodeData } from "../../../MiddleWare/codeMiddleware";
-
 import { updateProblems } from "../../../MiddleWare/treeMiddleware";
 
 import "./AddProblemComponent.css";
@@ -9,7 +8,7 @@ export default function AddProblemComponent(props) {
   const explRef = useRef();
   const codeRef = useRef();
 
-  const { currentSubTreeTitle } = props;
+  const { currentSubTreeTitle, hideModal } = props;
   const submitProblem = () => {
     const title = titleRef.current.value;
     const code = codeRef.current.value;
@@ -20,6 +19,7 @@ export default function AddProblemComponent(props) {
 
     //fetch the new problems
     getCodeData(currentSubTreeTitle);
+    hideModal();
   };
 
   return (

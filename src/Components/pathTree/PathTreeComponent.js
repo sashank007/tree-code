@@ -15,13 +15,12 @@ export default function PathTreeComponent() {
   }));
 
   const dispatch = useDispatch();
-  console.log("path tree : ", pathTree);
 
   const pathTreeClicked = (event) => {
     const goToNode = event.target.value;
 
     const tree = pathTree;
-    console.log("value : ", event.target);
+
     if (StringUtils.isNotBlank(goToNode)) {
       while (pathTree[pathTree.length - 1] !== goToNode) {
         tree.pop();

@@ -1,17 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { saveTreeData } from "../../../MiddleWare/treeMiddleware";
 
 export default function AddTreeNodeComponent(props) {
   const inputRef = useRef();
-  const { currentSubTreeTitle, fetchSubTree } = props;
-
-  console.log("props for add tree  : ", props);
+  const { currentSubTreeTitle, fetchSubTree, hideModal } = props;
 
   const addNode = async () => {
     const newNodeTitle = inputRef.current.value;
-    console.log("new node title :  ", newNodeTitle, currentSubTreeTitle);
+
     await saveTreeData(currentSubTreeTitle, newNodeTitle);
     fetchSubTree(currentSubTreeTitle);
+    hideModal();
   };
 
   return (

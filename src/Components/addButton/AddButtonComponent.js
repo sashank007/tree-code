@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import Modal from "react-modal";
 import AddProblemComponent from "./addProblem/AddProblemComponent";
 import AddTreeNodeComponent from "./addTreeNode/AddTreeNodeComponent";
+import "./AddButtonComponent.css";
 
 export default function AddButtonComponent(props) {
   const { currentSubTreeTitle, fetchSubTree } = props;
@@ -44,7 +45,9 @@ export default function AddButtonComponent(props) {
   return (
     <div>
       <div>
-        <button onClick={displayModal}>Add</button>
+        <button className="add-button" onClick={displayModal}>
+          Add
+        </button>
         <Modal
           isOpen={modalIsOpen}
           // onAfterOpen={afterOpenModal}
@@ -52,7 +55,7 @@ export default function AddButtonComponent(props) {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <button onClick={hideModal}>close</button>
+          {/* <button onClick={hideModal}>close</button> */}
           <br />
           <button onClick={addProblem}>Add Problem</button>
           <button onClick={addTreeNode}>Add TreeNode</button>
@@ -62,13 +65,17 @@ export default function AddButtonComponent(props) {
               <AddTreeNodeComponent
                 currentSubTreeTitle={currentSubTreeTitle}
                 fetchSubTree={fetchSubTree}
+                hideModal={hideModal}
               />
             )}
           </div>
           <div>
             {" "}
             {displayAddProblemComponent && (
-              <AddProblemComponent currentSubTreeTitle={currentSubTreeTitle} />
+              <AddProblemComponent
+                currentSubTreeTitle={currentSubTreeTitle}
+                hideModal={hideModal}
+              />
             )}{" "}
           </div>
         </Modal>
